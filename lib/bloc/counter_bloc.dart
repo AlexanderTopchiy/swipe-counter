@@ -20,6 +20,11 @@ class CounterBloc implements Bloc {
     _counterController.sink.add(_count);
   }
 
+  void resetCount() {
+    _count = 0;
+    _counterController.sink.add(_count);
+  }
+
   @override
   void dispose() {
     _counterController.close();
