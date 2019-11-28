@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:swipe_counter/bloc/bloc_provider.dart';
 import 'package:swipe_counter/bloc/counter_bloc.dart';
+import 'package:swipe_counter/resources/res_colors.dart';
+import 'package:swipe_counter/resources/res_strings.dart';
+import 'package:swipe_counter/resources/res_styles.dart';
 
 class CounterScreen extends StatelessWidget {
   final counterBloc = CounterBloc();
@@ -13,18 +16,15 @@ class CounterScreen extends StatelessWidget {
         body: Stack(
           children: <Widget>[
             // Background
-            Container(color: Color.fromRGBO(0, 137, 123, 1)),
+            Container(color: ResColors.backgroundColor),
             // Title
             Align(
               alignment: Alignment.topCenter,
               child: Container(
                 margin: EdgeInsets.only(top: 100.0),
                 child: Text(
-                  'Swipe Counter',
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 32.0,
-                  ),
+                  ResStrings.pageTitle,
+                  style: ResStyles.pageTitleTextStyle,
                 ),
               ),
             ),
@@ -40,15 +40,12 @@ class CounterScreen extends StatelessWidget {
                     borderRadius: BorderRadius.circular(20.0)
                   ),
                   child: RaisedButton(
-                    color: Color.fromRGBO(239, 83, 80, 1),
+                    color: ResColors.resetButtonColor,
                     child: Text(
-                      'Reset', 
-                      style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 18.0
-                        ),
+                      ResStrings.resetButton, 
+                      style: ResStyles.buttonTextStyle,
                       ),
-                    onPressed: () {},
+                    onPressed: () {counterBloc.resetCount();},
                   ),
                 ),
               ),
@@ -58,18 +55,15 @@ class CounterScreen extends StatelessWidget {
               alignment: Alignment.centerLeft,
               child: Container(
                 decoration: BoxDecoration(
-                  color: Color.fromRGBO(255, 255, 255, 0.4),
+                  color: ResColors.directionMarkerColor,
                 ),
                 height: 30.0,
                 width: 30.0,
                 margin: EdgeInsets.only(left: 10.0),
                 child: Center(
                   child: Text(
-                    '-', 
-                    style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 18.0
-                      ),
+                    ResStrings.minus, 
+                    style: ResStyles.buttonTextStyle,
                   ),
                 ),
               ),
@@ -79,18 +73,15 @@ class CounterScreen extends StatelessWidget {
               alignment: Alignment.centerRight,
               child: Container(
                 decoration: BoxDecoration(
-                  color: Color.fromRGBO(255, 255, 255, 0.4),
+                  color: ResColors.directionMarkerColor,
                 ),
                 height: 30.0,
                 width: 30.0,
                 margin: EdgeInsets.only(right: 10.0),
                 child: Center(
                   child: Text(
-                    '+', 
-                    style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 18.0
-                      ),
+                    ResStrings.plus, 
+                    style: ResStyles.buttonTextStyle,
                   ),
                 ),
               ),
@@ -111,9 +102,7 @@ class CounterScreen extends StatelessWidget {
                       child: Center(
                         child: Text(
                           counterBloc.currentCount.toString(),
-                          style: TextStyle(
-                            fontSize: 50.0
-                          ),
+                          style: ResStyles.cardTextStyle,
                         ),
                       ),
                     ), 
